@@ -1,0 +1,193 @@
+﻿<Window x:Class="QuadraticInequalities.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="QuadraticInequalities" Height="450" Width="800">
+
+    <Window.Resources>
+    </Window.Resources>
+
+    <Grid Background="#FFAAE82D">
+
+        <!-- Grids for the menu and the rest -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="Rownanie">
+                <MenuItem x:Name="MenuItem_WyzerujRownanie" Header="Wyzeruj rownanie" Click="MenuItem_WyzerujRownanie_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/Resetuj.jpg"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Lewa strona">
+                    <MenuItem x:Name="MenuItem_LewaStronaZera" Header="Wstaw wszędzie zera" Click="MenuItem_LewaStronaZera_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Cyfra0.jpg"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Prawa strona">
+                    <MenuItem x:Name="MenuItem_PrawaStronaZera" Header="Wstaw wszędzie zera" Click="MenuItem_PrawaStronaZera_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Cyfra0.jpg"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Opcje">
+                <MenuItem Header="Zapisz dane do pliku" Click="MenuItem_ZapiszDanych_Click" d:IsHidden="True">
+                    <MenuItem.Icon>
+                        <Image Source="/Zapisz.jpg" ></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Wczytaj dane z pliku" Click="MenuItem_WczytanieDanych_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/Wczytaj.jpg" ></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1">
+            <!-- Grids for result and calculations -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!-- Calculations -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <UniformGrid Grid.Row="1" Columns="1">
+                            <Label Content="Lewa strona równania" Background="#FFC1E56B" FontSize="16" FontWeight="Normal" FontStretch="Normal" FontStyle="Normal" Visibility="Visible" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center"></Label>
+
+                            <Label Content="Podaj współczynnik a" Background="#FFF1A3A3"></Label>
+                            <TextBox x:Name="textBoxWspolczynnikA" KeyUp="PobierzLewyWspolczynnikA"></TextBox>
+                            <Label Content="Podaj wspolczynnik b" Background="#FFF1A3A3"></Label>
+                            <TextBox x:Name="textBoxWspolczynnikB" KeyUp="PobierzLewyWspolczynnikB"></TextBox>
+                            <Label Content="Podaj współczynnik c" Background="#FFF1A3A3" />
+                            <TextBox x:Name="textBoxWspolczynnikC" KeyUp="PobierzLewyWspolczynnikC"></TextBox>
+                            <Label Content="Wybierz znak nierówności" Background="#FFF1A3A3"></Label>
+                        </UniformGrid>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                    </StackPanel>
+                </Grid>
+                <UniformGrid Grid.Row="1" Rows="1">
+                    <Button x:Name="Button_ZnakWiekszy" Content=">" Click="Button_Znak_Click" Background="Aqua"></Button>
+                    <Button x:Name="Button_ZnakWiekszyRowny" Content=">=" Click="Button_Znak_Click" Background="Aqua"></Button>
+                    <Button x:Name="Button_ZnakMniejszy" Content="&lt;" Click="Button_Znak_Click" Background="Aqua"></Button>
+                    <Button x:Name="Button_ZnakMniejszyRowny" Content="&lt;=" Click="Button_Znak_Click" Background="Aqua" />
+                </UniformGrid>
+                <!-- &lt; oznacza < -->
+
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch">
+                    <TextBlock Grid.Row="2" Text="Postać nierówności:" Background="#FFE0CBCB" Height="25"></TextBlock>
+                    <TextBlock x:Name="TextBlock_PostacNierownosci" Grid.Row="2" Text="" Background="#FFE0CBCB" Height="25"></TextBlock>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Prawa strona równania" Background="#FFC1E56B" FontSize="16" FontWeight="Normal" FontStretch="Normal" FontStyle="Normal" Visibility="Visible" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center"></Label>
+
+                <UniformGrid Grid.Row="1" Columns="1">
+
+                    <Label Content="Podaj współczynnik a" Background="#FFF1A3A3"></Label>
+                    <TextBox x:Name="textBoxWspolczynnikA2" KeyUp="PobierzPrawyWspolczynnikA"></TextBox>
+                    <Label Content="Podaj wspolczynnik b" Background="#FFF1A3A3"></Label>
+                    <TextBox x:Name="textBoxWspolczynnikB2" KeyUp="PobierzPrawyWspolczynnikB"></TextBox>
+                    <Label Content="Podaj współczynnik c" Background="#FFF1A3A3" />
+                    <TextBox x:Name="textBoxWspolczynnikC2" KeyUp="PobierzPrawyWspolczynnikC"></TextBox>
+                    <Label Content="" Background="#FFF1A3A3"></Label>
+                    <UniformGrid Columns="2" Rows="1">
+
+                        <!-- &lt; oznacza < -->
+                    </UniformGrid>
+                </UniformGrid>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="2" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"></RowDefinition>
+                    <RowDefinition Height="57*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="Button_Oblicz" Grid.Row="0" Content="Oblicz" Click="Button_Oblicz_Click">
+                </Button>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_Nierownosc" Grid.Row="0" Text="Nierówność: ">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF69DA52" />
+                                <GradientStop Color="#FFF6F2F2" Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_X1" Grid.Row="1" Text="x1=">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF69DA52" />
+                                <GradientStop Color="#FFF6F2F2" Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_X2" Grid.Row="2" Text="x2=">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF69DA52" />
+                                <GradientStop Color="#FFF6F2F2" Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_Delta" Grid.Row="3" Text="Delta=">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF69DA52" />
+                                <GradientStop Color="#FFF6F2F2" Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_Wynik" Grid.Row="4" Text="Wynik: ">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF69DA52" />
+                                <GradientStop Color="#FFF6F2F2" Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
