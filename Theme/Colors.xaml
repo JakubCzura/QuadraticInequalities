@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="ApplicationBackground">White</SolidColorBrush>
+    <SolidColorBrush x:Key="InputDescriptionColor">#FFF1A3A3</SolidColorBrush>
+    <SolidColorBrush x:Key="FormOfInequalityColor">#FFE0CBCB</SolidColorBrush>
+    <SolidColorBrush x:Key="InequalityHeaderColor">#FFC1E56B</SolidColorBrush>
+    
+    <LinearGradientBrush x:Key="ResultBackgroundColor">
+        <GradientStop Color="#FF69DA52" />
+        <GradientStop Color="#FFF6F2F2" Offset="1" />
+    </LinearGradientBrush>
+
+</ResourceDictionary>

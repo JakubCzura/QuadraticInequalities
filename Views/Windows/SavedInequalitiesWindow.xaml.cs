@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace QuadraticInequalities.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for SavedInequalities.xaml
+    /// Interaction logic for SavedInequalitiesWindow.xaml
     /// </summary>
-    public partial class SavedInequalities : Window
+    public partial class SavedInequalitiesWindow : Window
     {
-        public SavedInequalities()
+        public SavedInequalitiesWindow()
         {
             InitializeComponent();
         }
