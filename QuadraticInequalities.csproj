@@ -5,11 +5,30 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Logo.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Load.png" />
+    <None Remove="Images\Reset.png" />
+    <None Remove="Images\Save.png" />
+    <None Remove="Images\Zero.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Logo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Load.png" />
+    <Resource Include="Images\Reset.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\Zero.png" />
   </ItemGroup>
 
 </Project>

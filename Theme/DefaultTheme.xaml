@@ -5,14 +5,19 @@
         <ResourceDictionary Source="Colors.xaml" />
         <ResourceDictionary Source="Labels.xaml" />
         <ResourceDictionary Source="TextBlocks.xaml" />
+        <ResourceDictionary Source="Buttons.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="Label" x:Key="InputDescriptionLabelStyle">
+    <Style TargetType="Label" x:Key="InputDescriptionLabelStyle" BasedOn="{StaticResource InputDescriptionLabelBasic}">
         <Setter Property="Background" Value="{StaticResource InputDescriptionColorDefault}"/>
     </Style>
 
-    <Style TargetType="Label" x:Key="InequalityHeaderLabelStyle">
+    <Style TargetType="Label" x:Key="InequalityHeaderLabelStyle" BasedOn="{StaticResource InequalityHeaderLabelBasic}">
         <Setter Property="Background" Value="{StaticResource InequalityHeaderColorDefault}"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="WindowHeaderLabelStyle" BasedOn="{StaticResource WindowHeaderLabelBasic}">
+        <Setter Property="Background" Value="{StaticResource WindowHeaderColorDefault}"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="FormOfInequalitiesTextBlockStyle" BasedOn="{StaticResource FormOfInequalitiesTextBlockBasic}">
@@ -27,8 +32,8 @@
         <Setter Property="Background" Value="{StaticResource ApplicationBackgroundDefault}"/>
     </Style>
 
-    <Style TargetType="Label" x:Key="WindowHeaderLabelStyle" BasedOn="{StaticResource WindowHeaderLabelBasic}">
-        <Setter Property="Background" Value="{StaticResource WindowHeaderColorDefault}"/> 
+    <Style TargetType="Button" x:Key="InequalityButtonStyle" BasedOn="{StaticResource InequalityButtonBasic}">
+        <Setter Property="Background" Value="{StaticResource InequalityButtonColorDefault}"/>
     </Style>
     
 </ResourceDictionary>

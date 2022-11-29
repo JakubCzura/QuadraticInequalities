@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuadraticInequalities.Views.Windows"
+        xmlns:vm="clr-namespace:QuadraticInequalities.ViewModels"
         mc:Ignorable="d"
         Title="SavedInequalitiesWindow" Height="450" Width="800"
         Style="{DynamicResource WindowStyle}">
+
+    <Window.Resources>
+        <vm:SavedInequalitiesVM x:Key="SavedInequalitiesVM"/>
+    </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -27,7 +32,7 @@
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Podaj numer indeksu i kliknij OK, aby przenieść dane do kalkulatora" TextWrapping="Wrap" Background="#FFF6DFDF"></TextBlock>
                 <TextBox Text=""></TextBox>
-                <Button Height="50" Content="OK" Click="Button_OK_Click"></Button>
+                <Button Height="50" Content="OK"></Button>
             </StackPanel>
 
             <DataGrid Grid.Column="1"
