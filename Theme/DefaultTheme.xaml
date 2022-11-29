@@ -7,13 +7,28 @@
         <ResourceDictionary Source="TextBlocks.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="Label" x:Key="InputDescriptionLabelStyle" BasedOn="{StaticResource InputDescriptionLabelDefault}"/>
+    <Style TargetType="Label" x:Key="InputDescriptionLabelStyle">
+        <Setter Property="Background" Value="{StaticResource InputDescriptionColorDefault}"/>
+    </Style>
 
-    <Style TargetType="TextBlock" x:Key="FormOfInequalitiesTextBlockStyle" BasedOn="{StaticResource FormOfInequalitiesTextBlockDefault}">
+    <Style TargetType="Label" x:Key="InequalityHeaderLabelStyle">
+        <Setter Property="Background" Value="{StaticResource InequalityHeaderColorDefault}"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="FormOfInequalitiesTextBlockStyle" BasedOn="{StaticResource FormOfInequalitiesTextBlockBasic}">
         <Setter Property="Background" Value="{StaticResource FormOfInequalityColorDefault}"/>
     </Style>
 
-    <Style TargetType="TextBlock" x:Key="ResultTextBlockStyle" BasedOn="{StaticResource ResultTextBlockDefault}"/>
+    <Style TargetType="TextBlock" x:Key="ResultTextBlockStyle" BasedOn="{StaticResource ResultTextBlockBasic}">
+        <Setter Property="Background" Value="{StaticResource ResultBackgroundColorDefault}"/>
+    </Style>
 
+    <Style TargetType="Window" x:Key="WindowStyle">
+        <Setter Property="Background" Value="{StaticResource ApplicationBackgroundDefault}"/>
+    </Style>
 
+    <Style TargetType="Label" x:Key="WindowHeaderLabelStyle" BasedOn="{StaticResource WindowHeaderLabelBasic}">
+        <Setter Property="Background" Value="{StaticResource WindowHeaderColorDefault}"/> 
+    </Style>
+    
 </ResourceDictionary>
