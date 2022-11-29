@@ -1,5 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="TextBlock" x:Key="FormOfInequalitiesTextBlock">
+        <Setter Property="Background" Value="{StaticResource FormOfInequalityColor}"/>
+    </Style>
     
-    <TextBlock
 </ResourceDictionary>
