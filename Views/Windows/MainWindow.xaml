@@ -78,13 +78,13 @@
                     <UniformGrid Grid.Column="0" Columns="1">
                         <Label Content="Lewa strona równania" Background="#FFC1E56B" FontSize="16" FontWeight="Normal" FontStretch="Normal" FontStyle="Normal" Visibility="Visible" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center"></Label>
 
-                        <Label Content="Podaj współczynnik a" Background="#FFF1A3A3"></Label>
+                        <Label Style="{DynamicResource InputDescriptionLabelStyle}" Content="Podaj współczynnik a" />
                         <TextBox x:Name="textBoxWspolczynnikA" KeyUp="PobierzLewyWspolczynnikA"></TextBox>
-                        <Label Content="Podaj wspolczynnik b" Background="#FFF1A3A3"></Label>
+                        <Label Style="{DynamicResource InputDescriptionLabelStyle}" Content="Podaj wspolczynnik b" />
                         <TextBox x:Name="textBoxWspolczynnikB" KeyUp="PobierzLewyWspolczynnikB"></TextBox>
-                        <Label Content="Podaj współczynnik c" Background="#FFF1A3A3" />
+                        <Label Style="{DynamicResource InputDescriptionLabelStyle}" Content="Podaj współczynnik c" />
                         <TextBox x:Name="textBoxWspolczynnikC" KeyUp="PobierzLewyWspolczynnikC"></TextBox>
-                        <Label Content="Wybierz znak nierówności" Background="#FFF1A3A3"></Label>
+                        <Label Style="{DynamicResource InputDescriptionLabelStyle}" Content="Wybierz znak nierówności" />
                     </UniformGrid>
 
                     <UniformGrid Grid.Column="1" Columns="1">
@@ -111,62 +111,19 @@
                 <!-- &lt; oznacza < -->
 
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch">
-                    <TextBlock Grid.Row="2" Text="Postać nierówności:" Background="#FFE0CBCB" Height="25"></TextBlock>
-                    <TextBlock x:Name="TextBlock_PostacNierownosci" Grid.Row="2" Text="" Background="#FFE0CBCB" Height="25"></TextBlock>
+                    <TextBlock Style="{DynamicResource FormOfInequalitiesTextBlockStyle}" Text="Postać nierówności:" />
+                    <TextBlock Style="{DynamicResource FormOfInequalitiesTextBlockStyle}" />
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Column="1" Grid.RowSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="6*"></RowDefinition>
-                    <RowDefinition Height="57*"></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <Button x:Name="Button_Oblicz" Grid.Row="0" Content="Oblicz" Click="Button_Oblicz_Click">
-                </Button>
-
-                <UniformGrid Grid.Row="1" Columns="1">
-                   
-                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_Nierownosc" Text="Nierówność: ">
-                        <TextBlock.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF69DA52" />
-                                <GradientStop Color="#FFF6F2F2" Offset="1" />
-                            </LinearGradientBrush>
-                        </TextBlock.Background>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_X1" Text="x1=">
-                        <TextBlock.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF69DA52" />
-                                <GradientStop Color="#FFF6F2F2" Offset="1" />
-                            </LinearGradientBrush>
-                        </TextBlock.Background>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_X2" Text="x2=">
-                        <TextBlock.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF69DA52" />
-                                <GradientStop Color="#FFF6F2F2" Offset="1" />
-                            </LinearGradientBrush>
-                        </TextBlock.Background>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_Delta" Text="Delta=">
-                        <TextBlock.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF69DA52" />
-                                <GradientStop Color="#FFF6F2F2" Offset="1" />
-                            </LinearGradientBrush>
-                        </TextBlock.Background>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" x:Name="TextBlock_Wynik" Text="Wynik: ">
-                        <TextBlock.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF69DA52" />
-                                <GradientStop Color="#FFF6F2F2" Offset="1" />
-                            </LinearGradientBrush>
-                        </TextBlock.Background>
-                    </TextBlock>
+            <Grid Grid.Column="1">
+                <UniformGrid Columns="1">
+                    <Button Content="Oblicz" Click="Button_Oblicz_Click"/>
+                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" TextWrapping="Wrap" x:Name="TextBlock_Nierownosc" Text="Nierówność: "/>
+                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" TextWrapping="Wrap" x:Name="TextBlock_X1" Text="x1="/>
+                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" TextWrapping="Wrap" x:Name="TextBlock_X2" Text="x2="/>
+                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" TextWrapping="Wrap" x:Name="TextBlock_Delta" Text="Delta="/>
+                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" TextWrapping="Wrap" x:Name="TextBlock_Wynik" Text="Wynik: "/>
                 </UniformGrid>
             </Grid>
         </Grid>

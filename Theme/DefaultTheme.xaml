@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+        <ResourceDictionary Source="Labels.xaml" />
+        <ResourceDictionary Source="TextBlocks.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="Label" x:Key="InputDescriptionLabelStyle" BasedOn="{StaticResource InputDescriptionLabelDefault}"/>
+
+    <Style TargetType="TextBlock" x:Key="FormOfInequalitiesTextBlockStyle" BasedOn="{StaticResource FormOfInequalitiesTextBlockDefault}">
+        <Setter Property="Background" Value="{StaticResource FormOfInequalityColorDefault}"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="ResultTextBlockStyle" BasedOn="{StaticResource ResultTextBlockDefault}"/>
+
+
+</ResourceDictionary>

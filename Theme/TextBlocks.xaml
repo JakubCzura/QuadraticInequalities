@@ -5,8 +5,13 @@
         <ResourceDictionary Source="Colors.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="TextBlock" x:Key="FormOfInequalitiesTextBlock">
-        <Setter Property="Background" Value="{StaticResource FormOfInequalityColor}"/>
+    <Style TargetType="TextBlock" x:Key="FormOfInequalitiesTextBlockDefault">
+        <Setter Property="Background" Value="{StaticResource FormOfInequalityColorDefault}"/>
+        <Setter Property="Height" Value="25"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="ResultTextBlockDefault">
+        <Setter Property="Background" Value="{StaticResource ResultBackgroundColorDefault}"/>
     </Style>
     
 </ResourceDictionary>
