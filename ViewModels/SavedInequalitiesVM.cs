@@ -9,7 +9,7 @@ namespace QuadraticInequalities.ViewModels
     /// <summary>
     /// View model for SavedInequalities.xaml
     /// </summary>
-    public class SavedInequalitiesVM
+    public class SavedInequalitiesVM : BaseViewModel
     {
 
     }
