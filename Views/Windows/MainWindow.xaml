@@ -13,7 +13,7 @@
         <vm:MainWindowVM x:Key="MainWindowVM" />
     </Window.Resources>
 
-    <Grid>
+    <Grid DataContext="{StaticResource MainWindowVM}">
 
         <!-- Grids for the menu and the rest -->
         <Grid.RowDefinitions>
@@ -84,16 +84,14 @@
                                Content="Lewa strona równania" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik a" />
-                        <TextBox x:Name="textBoxWspolczynnikA"/>
-                        <!--KeyUp="PobierzLewyWspolczynnikA"-->
+                        <TextBox Text="{Binding LeftCoefficientA}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj wspolczynnik b" />
-                        <TextBox x:Name="textBoxWspolczynnikB"/>
+                        <TextBox Text="{Binding LeftCoefficientB}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik c" />
-                        <TextBox x:Name="textBoxWspolczynnikC"/>
+                        <TextBox Text="{Binding LeftCoefficientC}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
-                               
                                Content="Wybierz znak nierówności" />
                     </UniformGrid>
 
@@ -102,25 +100,36 @@
                                Content="Prawa strona równania" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik a" />
-                        <TextBox x:Name="textBoxWspolczynnikA2"  />
-                        <!--KeyUp="PobierzPrawyWspolczynnikA"-->
+                        <TextBox Text="{Binding RightCoefficientA}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj wspolczynnik b" />
-                        <TextBox x:Name="textBoxWspolczynnikB2"/>
+                        <TextBox Text="{Binding RightCoefficientB}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik c" />
-                        <TextBox x:Name="textBoxWspolczynnikC2"/>
-                        <Label Style="{DynamicResource InputDescriptionLabelStyle}" />
+                        <TextBox Text="{Binding RightCoefficientC}" />
+                        <Label Style="{DynamicResource InputDescriptionLabelStyle}" 
+                               Content="{Binding Symbol}"/>
                     </UniformGrid>
                 </Grid>
 
                 <UniformGrid Grid.Row="1" Rows="1">
                     <!-- &lt; oznacza < -->
-                    <!-- &lt; oznacza < -->
-                    <Button Style="{DynamicResource InequalityButtonStyle}" Content=">" />
-                    <Button Style="{DynamicResource InequalityButtonStyle}" Content=">=" />
-                    <Button Style="{DynamicResource InequalityButtonStyle}" Content="&lt;" />
-                    <Button Style="{DynamicResource InequalityButtonStyle}" Content="&lt;=" />
+                    <Button Style="{DynamicResource InequalityButtonStyle}" 
+                            Content=">" 
+                            Command="{Binding ChooseInequalitySymbolCommand}"
+                            CommandParameter=">" />
+                    <Button Style="{DynamicResource InequalityButtonStyle}" 
+                            Content=">="
+                            Command="{Binding ChooseInequalitySymbolCommand}"
+                            CommandParameter=">="/>
+                    <Button Style="{DynamicResource InequalityButtonStyle}" 
+                            Content="&lt;" 
+                            Command="{Binding ChooseInequalitySymbolCommand}"
+                            CommandParameter="&lt;" />
+                    <Button Style="{DynamicResource InequalityButtonStyle}"
+                            Content="&lt;="
+                            Command="{Binding ChooseInequalitySymbolCommand}"
+                            CommandParameter="&lt;="/>
                 </UniformGrid>
 
                 <StackPanel Grid.Row="2"
@@ -135,12 +144,70 @@
 
             <Grid Grid.Column="1">
                 <UniformGrid Columns="1">
-                    <Button FontSize="20" Content="Oblicz" />
-                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" Text="Nierówność: " />
-                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" Text="x1=" />
-                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" Text="x2=" />
-                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" Text="Delta=" />
-                    <TextBlock Style="{DynamicResource ResultTextBlockStyle}" Text="Wynik: " />
+                    <Button FontSize="20"
+                            Content="Oblicz"
+                            Command="{Binding CalculateInequality}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="Nierówność: " />
+                        <TextBlock Grid.Column="1"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="{Binding InequalityForms.ReducedInequalityForm}" />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="x1 = " />
+                        <TextBlock Grid.Column="1"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="{Binding Inequality.X1}" />
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="x2 = " />
+                        <TextBlock Grid.Column="1"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="{Binding Inequality.X2}" />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="Delta = " />
+                        <TextBlock Grid.Column="1"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="{Binding Inequality.Discriminant}" />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="Wynik: " />
+                        <TextBlock Grid.Column="1"
+                                   Style="{DynamicResource ResultTextBlockStyle}"
+                                   Text="{Binding Inequality.Result}" />
+                    </Grid>
                 </UniformGrid>
             </Grid>
         </Grid>
