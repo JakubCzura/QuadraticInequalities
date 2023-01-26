@@ -8,8 +8,6 @@ namespace QuadraticInequalities.Models
 {
     public class Inequality
     {
-        public int Id { get; set; } 
-
         public double A { get; set; }
 
         public double B { get; set; }
@@ -36,7 +34,6 @@ namespace QuadraticInequalities.Models
 
         public string Symbol { get; set; }
 
-        public string Result { get; set; }
-       
+        public string Result { get; set; }      
     }
 }

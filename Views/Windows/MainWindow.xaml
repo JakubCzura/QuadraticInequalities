@@ -23,7 +23,7 @@
 
         <Menu Grid.Row="0">
             <MenuItem Header="Rownanie">
-                <MenuItem x:Name="MenuItem_WyzerujRownanie" Header="Wyzeruj rownanie">
+                <MenuItem Header="Wyzeruj rownanie">
                     <MenuItem.Icon>
                         <Image Source="/Images/Reset.png"></Image>
                     </MenuItem.Icon>
@@ -41,19 +41,6 @@
                             <Image Source="/Images/Zero.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
-                </MenuItem>
-            </MenuItem>
-
-            <MenuItem Header="Opcje">
-                <MenuItem Header="Zapisz dane do pliku">
-                    <MenuItem.Icon>
-                        <Image Source="/Images/Save.png" ></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="Wczytaj dane z pliku">
-                    <MenuItem.Icon>
-                        <Image Source="/Images/Load.png" ></Image>
-                    </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
         </Menu>
@@ -84,13 +71,13 @@
                                Content="Lewa strona równania" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik a" />
-                        <TextBox Text="{Binding LeftCoefficientA}" />
+                        <TextBox Text="{Binding Inequality.LeftCoefficientA}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj wspolczynnik b" />
-                        <TextBox Text="{Binding LeftCoefficientB}" />
+                        <TextBox Text="{Binding Inequality.LeftCoefficientB}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik c" />
-                        <TextBox Text="{Binding LeftCoefficientC}" />
+                        <TextBox Text="{Binding Inequality.LeftCoefficientC}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Wybierz znak nierówności" />
                     </UniformGrid>
@@ -100,15 +87,15 @@
                                Content="Prawa strona równania" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik a" />
-                        <TextBox Text="{Binding RightCoefficientA}" />
+                        <TextBox Text="{Binding Inequality.RightCoefficientA}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj wspolczynnik b" />
-                        <TextBox Text="{Binding RightCoefficientB}" />
+                        <TextBox Text="{Binding Inequality.RightCoefficientB}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik c" />
-                        <TextBox Text="{Binding RightCoefficientC}" />
+                        <TextBox Text="{Binding Inequality.RightCoefficientC}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}" 
-                               Content="{Binding Symbol}"/>
+                               Content="{Binding Inequality.Symbol}"/>
                     </UniformGrid>
                 </Grid>
 
@@ -138,7 +125,8 @@
                             HorizontalAlignment="Stretch">
                     <TextBlock Style="{DynamicResource FormOfInequalitiesTextBlockStyle}"
                                Text="Postać nierówności:" />
-                    <TextBlock Style="{DynamicResource FormOfInequalitiesTextBlockStyle}" />
+                    <TextBlock Style="{DynamicResource FormOfInequalitiesTextBlockStyle}" 
+                               Text="{Binding StandardInequalityForm}"/>
                 </StackPanel>
             </Grid>
 
@@ -146,7 +134,7 @@
                 <UniformGrid Columns="1">
                     <Button FontSize="20"
                             Content="Oblicz"
-                            Command="{Binding CalculateInequality}" />
+                            Command="{Binding CalculateInequalityCommand}" />
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -157,7 +145,7 @@
                                    Text="Nierówność: " />
                         <TextBlock Grid.Column="1"
                                    Style="{DynamicResource ResultTextBlockStyle}"
-                                   Text="{Binding InequalityForms.ReducedInequalityForm}" />
+                                   Text="{Binding ReducedInequalityForm}" />
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -169,7 +157,7 @@
                                    Text="x1 = " />
                         <TextBlock Grid.Column="1"
                                    Style="{DynamicResource ResultTextBlockStyle}"
-                                   Text="{Binding Inequality.X1}" />
+                                   Text="{Binding X1}" />
                     </Grid>
 
                     <Grid>
@@ -182,7 +170,7 @@
                                    Text="x2 = " />
                         <TextBlock Grid.Column="1"
                                    Style="{DynamicResource ResultTextBlockStyle}"
-                                   Text="{Binding Inequality.X2}" />
+                                   Text="{Binding X2}" />
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -194,7 +182,7 @@
                                    Text="Delta = " />
                         <TextBlock Grid.Column="1"
                                    Style="{DynamicResource ResultTextBlockStyle}"
-                                   Text="{Binding Inequality.Discriminant}" />
+                                   Text="{Binding Discriminant}" />
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -206,7 +194,7 @@
                                    Text="Wynik: " />
                         <TextBlock Grid.Column="1"
                                    Style="{DynamicResource ResultTextBlockStyle}"
-                                   Text="{Binding Inequality.Result}" />
+                                   Text="{Binding Result}" />
                     </Grid>
                 </UniformGrid>
             </Grid>
