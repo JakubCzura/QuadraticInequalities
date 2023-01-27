@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using QuadraticInequalities.Models;
 using System;
-using System.Security.Policy;
 using System.Windows;
 using System.Windows.Input;
 
@@ -60,6 +59,7 @@ namespace QuadraticInequalities.ViewModels
             get { return InequalityForms.StandardInequalityForm; }
             set { InequalityForms.StandardInequalityForm = value; OnPropertyChanged(); }
         }
+
         public string ReducedInequalityForm
         {
             get { return InequalityForms.ReducedInequalityForm; }
@@ -69,7 +69,7 @@ namespace QuadraticInequalities.ViewModels
         public double LeftCoefficientA
         {
             get { return Inequality.LeftCoefficientA; }
-            set { Inequality.LeftCoefficientA = value; OnPropertyChanged(); } 
+            set { Inequality.LeftCoefficientA = value; OnPropertyChanged(); }
         }
 
         public double LeftCoefficientB

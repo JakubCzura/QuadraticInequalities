@@ -1,9 +1,5 @@
 ﻿using QuadraticInequalities.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace QuadraticInequalities.ViewModels
 {
@@ -11,8 +7,8 @@ namespace QuadraticInequalities.ViewModels
     {
         public static string CalculateResult(Inequality inequality)
         {
-            StringBuilder StringBuilder= new StringBuilder();
-            if(inequality.A != 0)
+            StringBuilder StringBuilder = new StringBuilder();
+            if (inequality.A != 0)
             {
                 if (inequality.Discriminant < 0)
                 {
@@ -39,7 +35,6 @@ namespace QuadraticInequalities.ViewModels
                         }
                     }
                 }
-
                 else if (inequality.Discriminant == 0)
                 {
                     if (inequality.Symbol == ">=")
@@ -87,7 +82,6 @@ namespace QuadraticInequalities.ViewModels
                         }
                     }
                 }
-
                 else
                 {
                     if (inequality.Symbol == ">=")
@@ -136,7 +130,7 @@ namespace QuadraticInequalities.ViewModels
                     }
                 }
             }
-            
+
             return StringBuilder.ToString();
         }
     }

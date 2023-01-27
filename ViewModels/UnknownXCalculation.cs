@@ -16,7 +16,7 @@ namespace QuadraticInequalities.ViewModels
         {
             if (discriminant >= 0)
             {
-                if(a == 0) 
+                if (a == 0)
                 {
                     throw new ArgumentException("Cannot divide by a=0");
                 }

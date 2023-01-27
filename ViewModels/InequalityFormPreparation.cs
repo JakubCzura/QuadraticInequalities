@@ -1,9 +1,5 @@
 ﻿using QuadraticInequalities.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace QuadraticInequalities.ViewModels
 {
@@ -19,7 +15,7 @@ namespace QuadraticInequalities.ViewModels
             StringBuilder StringBuilder = new();
             if (inequality.A == 0 && inequality.B == 0 && inequality.C == 0)
             {
-                StringBuilder.Append(inequality.C);                          
+                StringBuilder.Append(inequality.C);
             }
             else
             {
@@ -52,7 +48,7 @@ namespace QuadraticInequalities.ViewModels
             StringBuilder StringBuilder = new();
             if (inequality.LeftCoefficientA == 0 && inequality.LeftCoefficientB == 0 && inequality.LeftCoefficientC == 0)
             {
-                StringBuilder.Append(inequality.LeftCoefficientC);     
+                StringBuilder.Append(inequality.LeftCoefficientC);
             }
             else
             {

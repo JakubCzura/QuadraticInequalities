@@ -6,13 +6,12 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="TextBlock" x:Key="FormOfInequalitiesTextBlockBasic">
-        <Setter Property="Height" Value="25"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Height" Value="25" />
+        <Setter Property="FontSize" Value="15" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="ResultTextBlockBasic">
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="FontSize" Value="15" />
     </Style>
-    
 </ResourceDictionary>
