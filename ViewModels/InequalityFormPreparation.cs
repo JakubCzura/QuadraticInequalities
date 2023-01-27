@@ -9,6 +9,11 @@ namespace QuadraticInequalities.ViewModels
 {
     public class InequalityFormPreparation
     {
+        /// <summary>
+        /// Reduces form of inequality
+        /// </summary>
+        /// <param name="inequality">Original inequality</param>
+        /// <returns>Reduced form of inequality like ax^2+bx+c>0</returns>
         public static string GetReducedInequalityForm(Inequality inequality)
         {
             StringBuilder StringBuilder = new();
@@ -37,6 +42,11 @@ namespace QuadraticInequalities.ViewModels
             return StringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Creates full form of inequality
+        /// </summary>
+        /// <param name="inequality">Original inequality</param>
+        /// <returns>Full form of inequality</returns>
         public static string GetFullInequalityForm(Inequality inequality)
         {
             StringBuilder StringBuilder = new();

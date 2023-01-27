@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="QuadraticInequalities"
         Height="450" Width="800"
-        Style="{DynamicResource WindowStyle}">
+        Style="{DynamicResource WindowStyle}"
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <vm:MainWindowVM x:Key="MainWindowVM" />
@@ -23,20 +24,23 @@
 
         <Menu Grid.Row="0">
             <MenuItem Header="Rownanie">
-                <MenuItem Header="Wyzeruj rownanie">
+                <MenuItem Header="Wyzeruj rownanie"
+                          Command="{Binding ResetCoefficientsCommand}">
                     <MenuItem.Icon>
                         <Image Source="/Images/Reset.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Lewa strona">
-                    <MenuItem  Header="Wstaw wszędzie zera">
+                    <MenuItem Header="Wstaw wszędzie zera" 
+                              Command="{Binding ResetLeftCoefficientsCommand}">
                         <MenuItem.Icon>
                             <Image Source="/Images/Zero.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Prawa strona">
-                    <MenuItem Header="Wstaw wszędzie zera">
+                    <MenuItem Header="Wstaw wszędzie zera"
+                              Command="{Binding ResetRightCoefficientsCommand}">
                         <MenuItem.Icon>
                             <Image Source="/Images/Zero.png"></Image>
                         </MenuItem.Icon>
@@ -71,13 +75,13 @@
                                Content="Lewa strona równania" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik a" />
-                        <TextBox Text="{Binding Inequality.LeftCoefficientA}" />
+                        <TextBox Text="{Binding LeftCoefficientA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj wspolczynnik b" />
-                        <TextBox Text="{Binding Inequality.LeftCoefficientB}" />
+                        <TextBox Text="{Binding LeftCoefficientB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik c" />
-                        <TextBox Text="{Binding Inequality.LeftCoefficientC}" />
+                        <TextBox Text="{Binding LeftCoefficientC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Wybierz znak nierówności" />
                     </UniformGrid>
@@ -87,15 +91,15 @@
                                Content="Prawa strona równania" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik a" />
-                        <TextBox Text="{Binding Inequality.RightCoefficientA}" />
+                        <TextBox Text="{Binding RightCoefficientA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj wspolczynnik b" />
-                        <TextBox Text="{Binding Inequality.RightCoefficientB}" />
+                        <TextBox Text="{Binding RightCoefficientB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}"
                                Content="Podaj współczynnik c" />
-                        <TextBox Text="{Binding Inequality.RightCoefficientC}" />
+                        <TextBox Text="{Binding RightCoefficientC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Style="{DynamicResource InputDescriptionLabelStyle}" 
-                               Content="{Binding Inequality.Symbol}"/>
+                               Content="{Binding Symbol}"/>
                     </UniformGrid>
                 </Grid>
 

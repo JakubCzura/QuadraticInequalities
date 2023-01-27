@@ -1,13 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using QuadraticInequalities.Commands;
 using QuadraticInequalities.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Policy;
 using System.Windows;
 using System.Windows.Input;
 
@@ -24,13 +18,21 @@ namespace QuadraticInequalities.ViewModels
             InequalityForms = new InequalityForms();
             CalculateInequalityCommand = new RelayCommand<object>(SetInequality);
             ChooseInequalitySymbolCommand = new RelayCommand<object>(SetSymbol);
+            ResetLeftCoefficientsCommand = new RelayCommand(ResetLeftCoefficients);
+            ResetRightCoefficientsCommand = new RelayCommand(ResetRightCoefficients);
+            ResetCoefficientsCommand = new RelayCommand(ResetCoefficients);
         }
 
         public ICommand CalculateInequalityCommand { get; private set; }
 
         public ICommand ChooseInequalitySymbolCommand { get; private set; }
 
+        public ICommand ResetLeftCoefficientsCommand { get; private set; }
+        public ICommand ResetRightCoefficientsCommand { get; private set; }
+        public ICommand ResetCoefficientsCommand { get; private set; }
+
         private Inequality inequality;
+
         public Inequality Inequality
         {
             get { return inequality; }
@@ -38,6 +40,7 @@ namespace QuadraticInequalities.ViewModels
         }
 
         private Inequality reducedInequality;
+
         public Inequality ReducedInequality
         {
             get { return reducedInequality; }
@@ -57,11 +60,52 @@ namespace QuadraticInequalities.ViewModels
             get { return InequalityForms.StandardInequalityForm; }
             set { InequalityForms.StandardInequalityForm = value; OnPropertyChanged(); }
         }
-
         public string ReducedInequalityForm
         {
             get { return InequalityForms.ReducedInequalityForm; }
             set { InequalityForms.ReducedInequalityForm = value; OnPropertyChanged(); }
+        }
+
+        public double LeftCoefficientA
+        {
+            get { return Inequality.LeftCoefficientA; }
+            set { Inequality.LeftCoefficientA = value; OnPropertyChanged(); } 
+        }
+
+        public double LeftCoefficientB
+        {
+            get { return Inequality.LeftCoefficientB; }
+            set { Inequality.LeftCoefficientB = value; OnPropertyChanged(); }
+        }
+
+        public double LeftCoefficientC
+        {
+            get { return Inequality.LeftCoefficientC; }
+            set { Inequality.LeftCoefficientC = value; OnPropertyChanged(); }
+        }
+
+        public double RightCoefficientA
+        {
+            get { return Inequality.RightCoefficientA; }
+            set { Inequality.RightCoefficientA = value; OnPropertyChanged(); }
+        }
+
+        public double RightCoefficientB
+        {
+            get { return Inequality.RightCoefficientB; }
+            set { Inequality.RightCoefficientB = value; OnPropertyChanged(); }
+        }
+
+        public double RightCoefficientC
+        {
+            get { return Inequality.RightCoefficientC; }
+            set { Inequality.RightCoefficientC = value; OnPropertyChanged(); }
+        }
+
+        public string Symbol
+        {
+            get { return Inequality.Symbol; }
+            set { Inequality.Symbol = value; OnPropertyChanged(); }
         }
 
         public double X1
@@ -92,14 +136,12 @@ namespace QuadraticInequalities.ViewModels
         {
             try
             {
-                Inequality.A = Inequality.LeftCoefficientA - Inequality.RightCoefficientA;
-                Inequality.B = Inequality.LeftCoefficientB - Inequality.RightCoefficientB;
-                Inequality.C = Inequality.LeftCoefficientC - Inequality.RightCoefficientC;
-                double discriminant = DiscriminantCalculation.CalculateDiscriminant(Inequality.A, Inequality.B, Inequality.C);
-                Discriminant = discriminant;
-                X1 = UnknownXCalculation.CalculateX(Inequality.A, Inequality.B, discriminant, false);
-                X2 = UnknownXCalculation.CalculateX(Inequality.A, Inequality.B, discriminant, true);
-
+                Inequality.A = CoefficientCalculation.CalcuateCoefficient(Inequality.LeftCoefficientA, Inequality.RightCoefficientA);
+                Inequality.B = CoefficientCalculation.CalcuateCoefficient(Inequality.LeftCoefficientB, Inequality.RightCoefficientB);
+                Inequality.C = CoefficientCalculation.CalcuateCoefficient(Inequality.LeftCoefficientC, Inequality.RightCoefficientC);
+                Discriminant = DiscriminantCalculation.CalculateDiscriminant(Inequality.A, Inequality.B, Inequality.C);
+                X1 = UnknownXCalculation.CalculateX(Inequality.A, Inequality.B, Discriminant, false);
+                X2 = UnknownXCalculation.CalculateX(Inequality.A, Inequality.B, Discriminant, true);
                 ReducedInequalityForm = InequalityFormPreparation.GetReducedInequalityForm(Inequality);
                 StandardInequalityForm = InequalityFormPreparation.GetFullInequalityForm(Inequality);
                 Result = ResultCalculation.CalculateResult(Inequality);
@@ -108,6 +150,26 @@ namespace QuadraticInequalities.ViewModels
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void ResetLeftCoefficients()
+        {
+            LeftCoefficientA = 0;
+            LeftCoefficientB = 0;
+            LeftCoefficientC = 0;
+        }
+
+        public void ResetRightCoefficients()
+        {
+            RightCoefficientA = 0;
+            RightCoefficientB = 0;
+            RightCoefficientC = 0;
+        }
+
+        public void ResetCoefficients()
+        {
+            ResetLeftCoefficients();
+            ResetRightCoefficients();
         }
 
         public void SetSymbol(object parameter)
