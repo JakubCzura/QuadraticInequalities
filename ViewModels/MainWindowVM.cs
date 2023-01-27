@@ -142,6 +142,7 @@ namespace QuadraticInequalities.ViewModels
                 Discriminant = DiscriminantCalculation.CalculateDiscriminant(Inequality.A, Inequality.B, Inequality.C);
                 X1 = UnknownXCalculation.CalculateX(Inequality.A, Inequality.B, Discriminant, false);
                 X2 = UnknownXCalculation.CalculateX(Inequality.A, Inequality.B, Discriminant, true);
+                XComparer.CompareX(Inequality);
                 ReducedInequalityForm = InequalityFormPreparation.GetReducedInequalityForm(Inequality);
                 StandardInequalityForm = InequalityFormPreparation.GetFullInequalityForm(Inequality);
                 Result = ResultCalculation.CalculateResult(Inequality);
@@ -189,7 +190,7 @@ namespace QuadraticInequalities.ViewModels
             catch
             {
                 Inequality.Symbol = ">=";
-                MessageBox.Show("Inequality symbol - parameter exception. Default symbol set");
+                MessageBox.Show("Błędny znak nierówności. Ustawiono domyślny znak");
             }
         }
     }

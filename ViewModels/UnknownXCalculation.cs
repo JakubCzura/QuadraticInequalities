@@ -18,7 +18,7 @@ namespace QuadraticInequalities.ViewModels
             {
                 if (a == 0)
                 {
-                    throw new ArgumentException("Cannot divide by a=0");
+                    throw new ArgumentException("Nie można dzielić przez a=0");
                 }
                 if (subtractOrAddDiscriminant == false)
                 {
@@ -31,7 +31,7 @@ namespace QuadraticInequalities.ViewModels
             }
             else
             {
-                throw new ArgumentException("Negative discriminant is not allowed to calculate inequality");
+                throw new ArgumentException("Ujemna delta");
             }
         }
     }

@@ -1,13 +1,16 @@
 ﻿using QuadraticInequalities.Models;
-using System.Text;
 
 namespace QuadraticInequalities.ViewModels
 {
     public class ResultCalculation
     {
+        /// <summary>
+        /// Creates result from given inequality
+        /// </summary>
+        /// <param name="inequality">Inequality to calculate</param>
+        /// <returns>Result from given inequality</returns>
         public static string CalculateResult(Inequality inequality)
         {
-            StringBuilder StringBuilder = new StringBuilder();
             if (inequality.A != 0)
             {
                 if (inequality.Discriminant < 0)
@@ -27,11 +30,11 @@ namespace QuadraticInequalities.ViewModels
                     {
                         if (inequality.A < 0)
                         {
-                            return "brak rozwiązań dla liczb rzeczywistych";
+                            return "x należy do liczb rzeczywistych";
                         }
                         else
                         {
-                            return "x należy do liczb rzeczywistych";
+                            return "brak rozwiązań dla liczb rzeczywistych";
                         }
                     }
                 }
@@ -88,50 +91,49 @@ namespace QuadraticInequalities.ViewModels
                     {
                         if (inequality.A > 0)
                         {
-                            return "x należy do liczb rzeczywistych";
+                            return $"x <= {inequality.X1} lub x >= {inequality.X2}";
                         }
                         else
                         {
-                            return $"x = {inequality.X1}";
+                            return $"x >= {inequality.X1} oraz x <= {inequality.X2}";
                         }
                     }
                     else if (inequality.Symbol == ">")
                     {
                         if (inequality.A > 0)
                         {
-                            return $"x należy do liczb rzeczywistych poza {inequality.X1}";
+                            return $"x < {inequality.X1} lub x > {inequality.X2}";
                         }
                         else
                         {
-                            return $"brak rozwiązań dla liczb rzeczywistych";
+                            return $"x > {inequality.X1} oraz x < {inequality.X2}";
                         }
                     }
                     else if (inequality.Symbol == "<=")
                     {
                         if (inequality.A > 0)
                         {
-                            return $"x = {inequality.X1}";
+                            return $"x >= {inequality.X1} oraz x <= {inequality.X2}";
                         }
                         else
                         {
-                            return $"x należy do liczb rzeczywistych";
+                            return $"x <= {inequality.X1} lub x >= {inequality.X2}";
                         }
                     }
                     else
                     {
                         if (inequality.A < 0)
                         {
-                            return "brak rozwiązań dla liczb rzeczywistych";
+                            return $"x < {inequality.X1} lub x > {inequality.X2}";
                         }
                         else
                         {
-                            return $"x należy do liczb rzeczywistych poza {inequality.X1}";
+                            return $"x > {inequality.X1} oraz x < {inequality.X2}";
                         }
                     }
                 }
             }
-
-            return StringBuilder.ToString();
+            return "Współczynnik a musi być różny od 0";
         }
     }
 }
